@@ -1,0 +1,37 @@
+﻿<table class="table">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Price</th>
+			<th>Amount</th>
+			<th>Total</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var item in Model.GetType().GetProperty("combined").GetValue(Model,null))
+		{
+			<tr>
+				<td>
+					@item.title
+				</td>
+				<td>
+					@item.price
+				</td>
+				<td>
+					@item.count
+				</td>
+				<td>
+					@(item.count * item.price)
+				</td>
+			</tr>
+		}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>Total Cost</td>
+			<td></td>
+			<td></td>
+			<td>@Model.GetType().GetProperty("totalCost").GetValue(Model, null)</td>
+		</tr>
+	</tfoot>
+</table>
